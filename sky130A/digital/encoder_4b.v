@@ -1,4 +1,4 @@
-module encoder_3b (
+module encoder_4b (
 	input [3:0] value,
 	output reg [14:0] therm);
 	

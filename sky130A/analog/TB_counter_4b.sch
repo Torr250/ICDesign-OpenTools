@@ -98,7 +98,7 @@ value=".lib $::SKYWATER_MODELS/sky130.lib.spice tt
 spice_ignore=false
 place=header}
 C {code_shown.sym} -120 -310 0 0 {name=include only_toplevel=false value="
-.inc /foss/designs/digital/counter_3b.spice
+.inc /foss/designs/digital/counter_4b.spice
 "}
 C {code_shown.sym} 390 -320 0 0 {name=SPICE only_toplevel=false 
 value="
@@ -107,7 +107,7 @@ value="
 .control
   save all
   tran 500p 300n 
-  write TB_counter_3b.raw
+  write TB_counter_4b.raw
 .endc
 "}
 C {devices/launcher.sym} -395 -415 0 0 {name=h4 
@@ -125,4 +125,4 @@ tclcommand="set show_hidden_texts 1; xschem annotate_op"
 C {vsource.sym} -290 -130 0 0 {name=V3
 value="pulse(0 'VDD' 12n '0.01/freq' '0.01/freq' 180n 200n)" 
 savecurrent=false}
-C {counter_3b.sym} 70 0 0 0 {name=x1}
+C {counter_4b.sym} 70 0 0 0 {name=x1}

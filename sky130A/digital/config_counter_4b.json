@@ -1,6 +1,6 @@
 {
-"DESIGN_NAME": "counter_3b",
-"VERILOG_FILES": ["./counter_3b.v"],
+"DESIGN_NAME": "counter_4b",
+"VERILOG_FILES": ["./counter_4b.v"],
 "CLOCK_PORT": "clk",
 "CLOCK_PERIOD": 10,
 "DESIGN_IS_CORE": false,
@@ -13,7 +13,7 @@
 "FP_PDN_HPITCH": 15,
 "FP_PDN_VOFFSET": 5,
 "FP_PDN_HOFFSET": 5,
-"FP_PIN_ORDER_CFG": "pinorder_counter_3b.txt",
+"FP_PIN_ORDER_CFG": "pinorder_counter_4b.txt",
 "VDD_NETS": ["VPWR"],
 "GND_NETS": ["VGND"]
 }

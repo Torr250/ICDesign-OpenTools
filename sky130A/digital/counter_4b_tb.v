@@ -1,9 +1,9 @@
-module counter_3b_tb;
+module counter_4b_tb;
 
 reg nrst,clk;
 wire [3:0] c;
 
-counter_3b UUT(.ctr_out(c),.clk(clk),.nrst(nrst));
+counter_4b UUT(.ctr_out(c),.clk(clk),.nrst(nrst));
 
 always begin
     #10
@@ -13,7 +13,7 @@ end
 
 initial begin
 $dumpfile("test.vcd");
-$dumpvars(0,counter_3b_tb);
+$dumpvars(0,counter_4b_tb);
 
 // we have to start somewhere
 clk = 0;

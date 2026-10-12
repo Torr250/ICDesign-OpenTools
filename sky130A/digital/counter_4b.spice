@@ -64,7 +64,7 @@
 .subckt sky130_fd_sc_hd__nand3_2 A B C VGND VNB VPB VPWR Y
 .ends
 
-.subckt counter_3b VGND VPWR clk ctr_out[0] ctr_out[1] ctr_out[2] ctr_out[3] nrst
+.subckt counter_4b VGND VPWR clk ctr_out[0] ctr_out[1] ctr_out[2] ctr_out[3] nrst
 XFILLER_12_43 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XFILLER_3_12 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XFILLER_0_24 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3

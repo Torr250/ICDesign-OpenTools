@@ -1,4 +1,4 @@
-module counter_3b(
+module counter_4b(
     input clk, nrst,
     output reg [3:0] ctr_out
 );

@@ -1,6 +1,6 @@
 {
-"DESIGN_NAME": "encoder_3b",
-"VERILOG_FILES": ["./encoder_3b.v"],
+"DESIGN_NAME": "encoder_4b",
+"VERILOG_FILES": ["./encoder_4b.v"],
 "DESIGN_IS_CORE": false,
 "PDK": "sky130A",
 "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
@@ -11,7 +11,7 @@
 "FP_PDN_HPITCH": 15,
 "FP_PDN_VOFFSET": 5,
 "FP_PDN_HOFFSET": 5,
-"FP_PIN_ORDER_CFG": "pinorder_encoder_3b.txt",
+"FP_PIN_ORDER_CFG": "pinorder_encoder_4b.txt",
 "VDD_NETS": ["VPWR"],
 "GND_NETS": ["VGND"]
 }
