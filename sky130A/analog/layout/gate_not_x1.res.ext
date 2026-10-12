@@ -1,0 +1,55 @@
+scale 1000 1 500000
+rnode "VSSA.t1" 0 0 30 30 0
+rnode "VSSA.t0" 0 0 45 30 0
+rnode "VSSA.n0" 0 0 -70 30 0
+rnode "VSSA" 0 0 -210 30 0
+resist "VSSA" "VSSA.n0" 9.475
+resist "VSSA.n0" "VSSA.t1" 253
+resist "VSSA.n0" "VSSA.t0" 3681.45
+rnode "VDDA.n0" 0 65.1329 -70 430 0
+rnode "VDDA.n1" 0 17.9047 -70 430 0
+rnode "VDDA.n2" 0 9.94707 -120 330 0
+rnode "VDDA.t1" 0 7.4603 30 430 0
+rnode "VDDA.n3" 0 9.94707 -120 430 0
+rnode "VDDA.t0" 0 94.4972 45 430 0
+rnode "VDDA.n4" 0 68.6348 -120 430 0
+rnode "VDDA.n5" 0 7.99025 -120 430 0
+rnode "VDDA.n6" 0 18.191 -70 530 0
+rnode "VDDA.n7" 0 0 -20 430 0
+rnode "VDDA.n8" 0 22.3809 -20 430 0
+rnode "VDDA.n9" 0 16.1703 -70 330 0
+rnode "VDDA" 0 48.8835 -210 390 0
+resist "VDDA" "VDDA.n0" 0.0121951
+resist "VDDA.n7" "VDDA.n1" 3.53458
+resist "VDDA.n7" "VDDA.n6" 3.53458
+resist "VDDA.n9" "VDDA.n1" 7.11111
+resist "VDDA.n1" "VDDA.n0" 9.3
+resist "VDDA" "VDDA.n9" 9.31829
+resist "VDDA.n6" "VDDA.n0" 9.33049
+resist "VDDA.n8" "VDDA.t1" 32.8333
+resist "VDDA.n5" "VDDA.n3" 45.3066
+resist "VDDA.n5" "VDDA.n4" 69.8474
+resist "VDDA.n3" "VDDA.n2" 120
+resist "VDDA.n4" "VDDA.n2" 185
+resist "VDDA.n9" "VDDA.n2" 185
+resist "VDDA.n3" "VDDA.n1" 185
+resist "VDDA.n6" "VDDA.n5" 230.307
+resist "VDDA.n8" "VDDA.n7" 290.733
+resist "VDDA.n4" "VDDA.t0" 391.875
+resist "VDDA.n9" "VDDA.n8" 585
+rnode "in.t1" 0 42.6703 45 430 0
+rnode "in.t0" 0 12.3871 45 30 0
+rnode "in.n0" 0 94.1127 -10 160 0
+rnode "in" 0 62.785 -210 160 0
+resist "in.n0" "in.t0" 162.127
+resist "in" "in.n0" 209.6
+resist "in.n0" "in.t1" 387.061
+rnode "out.t1" 0 106.37 60 430 0
+rnode "out.t0" 0 31.1388 60 30 0
+rnode "out.n0" 0 166.087 150 160 0
+rnode "out" 0 3.47363 200 160 0
+resist "out" "out.n0" 16
+resist "out.n0" "out.t1" 263.703
+resist "out.n0" "out.t0" 265.8
+device msubckt sky130_fd_pr__pfet_01v8 30 280 31 281  "VDDA.t0" "in.t1" 60 0 "VDDA.t1" 300 30000,800 "out.t1" 300 30000,800
+device msubckt sky130_fd_pr__nfet_01v8 30 -20 31 -19  "VSSA.t0" "in.t0" 60 0 "VSSA.t1" 100 10000,400 "out.t0" 100 10000,400

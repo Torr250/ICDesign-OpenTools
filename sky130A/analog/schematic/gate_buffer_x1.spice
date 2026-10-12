@@ -1,0 +1,18 @@
+** sch_path: /foss/designs/analog/gate_buffer_x1.sch
+.subckt gate_buffer_x1 in out VDDA VSSA
+*.PININFO in:I out:O VDDA:B VSSA:B
+X1 in inb VDDA VSSA gate_not_x1
+X2 inb out VDDA VSSA gate_not_x1
+.ends
+
+* expanding   symbol:  gate_not_x1.sym # of pins=4
+** sym_path: /foss/designs/analog/gate_not_x1.sym
+** sch_path: /foss/designs/analog/gate_not_x1.sch
+.subckt gate_not_x1 in out VDDA VSSA
+*.PININFO in:I VDDA:B VSSA:B out:O
+XM1 out in VSSA VSSA sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
++ mult=1
+XM2 out in VDDA VDDA sky130_fd_pr__pfet_01v8 L=0.15 W=1.5 nf=1 ad=0.435 as=0.435 pd=3.58 ps=3.58 nrd=0.193333333333333
++ nrs=0.193333333333333 sa=0 sb=0 sd=0 mult=1
+.ends
+

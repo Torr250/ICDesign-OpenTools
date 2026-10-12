@@ -1,0 +1,6 @@
+#W
+clk
+nrst
+
+#E
+ctr_out.*

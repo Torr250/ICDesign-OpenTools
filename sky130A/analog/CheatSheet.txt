@@ -1,0 +1,207 @@
+# Prepare circuit for layouts
+# Simulation > LVS > Top Level is subcircuit > Netlist
+# Verify the netlist
+
+
+** sch_path: /foss/designs/analog/gate_not_x1.sch
+.subckt gate_not_x1 in out VDDA VSSA
+
+** sch_path: /foss/designs/analog/gate_buffer_x1.sch
+.subckt gate_buffer_x1 in out VDDA VSSA
+
+
+# Create directory 
+mkdir schematic
+mkdir layout
+
+Save both files in schematic
+gate_not_x1.spice
+gate_buffer_x1.spice
+
+
+Window
+Grid 0.05u
+Snap to Grid on 
+Grid on 
+
+Box
+
+0.5x0.5
+paint ndiff
+0.15 x 0.5
+paint poly 
+paint psubdiff
+
+#Poly needs to be 4 units above/bellow
+
+# Place Contacts
+paint psubdiffcont
+paint ndiffc
+
+drc why
+# Paint local InterConnect
+paint locali
+
+
+#Select area
+Copy nmos and generate a pmos
+
+copy n 30
+
+# We can generate a pmos from an nmos transistor
+copy n 10
+
+# We can generate 3 contacts copies
+
+# Paint nwell to generate pmos from nmos
+
+# InterConnect Inverter
+Top and bottom with M1 
+poly contact (polycont) go connect poly with locali
+
+paint polycont
+paint viali
+
+
+#Once the design is drc free we need to place the labels and ports
+Double right clic to generate a cross
+
+setlabel fontlist
+
+label VDDA FreeSerif 0.2u w metal1
+label VSSA FreeSerif 0.2u w metal1
+label in FreeSerif 0.2u w locali
+label out FreeSerif 0.2u e locali
+
+#Place the cursor and generate a port
+#Each of the numbers indicate the location on the subcircuit
+port make 1
+port make 2
+port make 3
+port make 4
+
+
+# Remove port or labels
+port remove
+erase labels
+
+# Now lets extract the schematic to test Layout vs Schematic (LVS)
+
+save
+extract all
+ext2spice scale off
+ext2spice lvs
+ext2spice
+ 
+#It Will generate the spice file for lvs
+# We Will use netgen to test LVS
+
+netgen &
+
+lvs {/foss/designs/analog/schematic/gate_not_x1.spice gate_not_x1} {/foss/designs/analog/layout/gate_not_x1.spice gate_not_x1} /foss/pdks/sky130A/libs.tech/netgen/sky130A_setup.tcl
+
+
+#Circuits match uniquely
+#If there are problems the reports are shown in comp.out
+
+# Now we need to extract the parastics
+# lets go back to the magic console
+# Select the complete design, Will be needed to extrac resistors
+
+extract all
+ext2sim labels on 
+ext2sim
+extresist tolerance 10
+extresist
+ext2spice lvs
+ext2spice cthresh 0.01
+ext2spice extresist on 
+ext2spice
+
+# Now we have extracted out inverter with interconnection parasitics
+
+
+# Lets generate the Buffer layout, it uses two inverters
+Cell > New
+gate_buffer_x1
+
+#We need to add the inverter
+getcell gate_not_x1
+
+Ctrl + x
+Shift + x
+
+Paint metal1 and locali 
+
+place labels as before
+
+label VDDA FreeSerif 0.2u w metal1
+label VSSA FreeSerif 0.2u w metal1
+label in FreeSerif 0.2u w locali
+label out FreeSerif 0.2u e locali
+
+#Place the cursor and generate a port
+#Each of the numbers indicate the location on the subcircuit
+port make 1
+port make 2
+port make 3
+port make 4
+
+# Extract circuit for lvs
+
+save
+extract all
+ext2spice scale off
+ext2spice lvs
+ext2spice
+
+# If we have set the capacitance and resistance flags
+extract all
+ext2spice scale off
+ext2spice lvs
+ext2spice extresist off
+ext2spice cthresh 1000
+ext2spice
+
+
+# Check layout vs schematic
+
+netgen &
+
+lvs {/foss/designs/analog/schematic/gate_buffer_x1.spice gate_buffer_x1} {/foss/designs/analog/layout/gate_buffer_x1.spice gate_buffer_x1} /foss/pdks/sky130A/libs.tech/netgen/sky130A_setup.tcl
+
+#Circuits match uniquely
+#If there are problems the reports are shown in comp.out
+
+# Now we need to extract the parastics
+# lets go back to the magic console
+# Select the complete design, Will be needed to extrac resistors
+
+extract all
+ext2sim labels on 
+ext2sim
+extresist tolerance 10
+extresist
+ext2spice lvs
+ext2spice cthresh 0.01
+ext2spice extresist on 
+ext2spice
+
+
+
+
+###### At xschem 
+code_shwon.sym
+.inc /foss/designs/analog/layout/gate_not_x1.spice
+.inc /foss/designs/analog/layout/gate_buffer_x1.spice
+
+
+
+Before
+Trise Inverter 249.5ps
+
+After
+Trise Inverter 277.3ps
+
+A 27ps increase
+

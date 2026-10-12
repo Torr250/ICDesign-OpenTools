@@ -1,0 +1,57 @@
+#More info
+https://unic-cass.github.io/training/4.1-create-design-and-simulate.html
+
+
+#See inside the documents
+gedit counter_3b.v &
+gedit counter_3b_tb.v &
+
+#Compile the counter and turn it into an executalbe
+iverilog -o counter_3b_tb counter_3b_tb.v counter_3b.v
+
+#Test the code
+vvp counter_3b_tb
+
+#See the waveforms
+gtkwave test.vcd
+
+
+#In order to synthesize your circuit you need 3 files
+1) verilog.v
+2) config.json
+3) pinorder.txt
+
+gedit config_counter_3b.json &
+gedit pinorder_counter_3b.txt &
+
+librelane config_counter_3b.json 
+
+#go to runs > final > gds
+#open magic
+magic &
+
+read gds
+
+select all the design with s
+ctrl+x show desing
+shift+x hide design 
+z zoom in
+shift+z zoom out
+
+# go to runs > final > spice
+# copy dot spice document and paste it into the digital and analog/spice
+cp counter_3b.spice /foss/designs/digital/
+
+# return 
+cd /foss/designs/ 
+gedit counter_3b.spice &
+
+# Symbol needs to match the spice pin order
+.subckt counter_3b VGND VPWR clk ctr_out[0] ctr_out[1] ctr_out[2] ctr_out[3] nrst
+
+type=primitive
+format="@name @@VGND @@VPWR @@clk @@ctr_out[0] @@ctr_out[1] @@ctr_out[2] @@ctr_out[3] @@nrst @symname"
+spectre_format="@name ( @pinlist ) @symname"
+template="name=x1"
+
+

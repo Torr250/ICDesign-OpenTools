@@ -1,0 +1,5 @@
+#W
+value.*
+
+#E
+therm.*

@@ -1,0 +1,18 @@
+| units: 500000 tech: sky130A format: MIT
+x in VSSA gate_not_x1_1/in VSSA s=10000,400 d=10000,400 l=30 w=100 x=170 y=11 sky130_fd_pr__nfet_01v8
+x in VDDA gate_not_x1_1/in VDDA s=30000,800 d=30000,800 l=30 w=300 x=170 y=310 sky130_fd_pr__pfet_01v8
+x gate_not_x1_1/in VSSA out VSSA s=10000,400 d=10000,400 l=30 w=100 x=580 y=11 sky130_fd_pr__nfet_01v8
+x gate_not_x1_1/in VDDA out VDDA s=30000,800 d=30000,800 l=30 w=300 x=580 y=310 sky130_fd_pr__pfet_01v8
+R VSSA 1941
+= VSSA gate_not_x1_0/VSSA
+= VSSA gate_not_x1_1/VSSA
+= VSSA VSUBS
+R out 817
+= out gate_not_x1_1/out
+R VDDA 4743
+= VDDA gate_not_x1_0/VDDA
+= VDDA gate_not_x1_1/VDDA
+R gate_not_x1_1/in 1913
+= gate_not_x1_1/in gate_not_x1_0/out
+R in 1099
+= in gate_not_x1_0/in

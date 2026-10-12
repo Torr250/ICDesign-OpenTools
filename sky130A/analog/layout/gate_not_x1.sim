@@ -1,0 +1,7 @@
+| units: 500000 tech: sky130A format: MIT
+x in VSSA out VSSA s=10000,400 d=10000,400 l=30 w=100 x=30 y=-19 sky130_fd_pr__nfet_01v8
+x in VDDA out VDDA s=30000,800 d=30000,800 l=30 w=300 x=30 y=280 sky130_fd_pr__pfet_01v8
+R out 817
+R in 1098
+R VDDA 1945
+R VSSA 346

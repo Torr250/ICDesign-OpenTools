@@ -1,0 +1,75 @@
+$date
+	Thu Jun 18 02:39:35 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module counter_3b_tb $end
+$var wire 4 ! c [3:0] $end
+$var reg 1 " clk $end
+$var reg 1 # nrst $end
+$scope module UUT $end
+$var wire 1 " clk $end
+$var wire 1 # nrst $end
+$var reg 4 $ ctr [3:0] $end
+$var reg 4 % ctr_out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx %
+bx $
+0#
+0"
+bx !
+$end
+#10
+b0 !
+b0 %
+b0 $
+1"
+#15
+1#
+#20
+0"
+#30
+b1 !
+b1 %
+b1 $
+1"
+#40
+0"
+#50
+b10 !
+b10 %
+b10 $
+1"
+#60
+0"
+#70
+b11 !
+b11 %
+b11 $
+1"
+#80
+0"
+#90
+b100 !
+b100 %
+b100 $
+1"
+#100
+0"
+#110
+b101 !
+b101 %
+b101 $
+1"
+#115

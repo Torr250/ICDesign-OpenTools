@@ -1,0 +1,5 @@
+VSSA -69 60 m1
+out 750 190 li
+VDDA -69 420 m1
+gate_not_x1_1/in 341 190 li
+in -69 190 li

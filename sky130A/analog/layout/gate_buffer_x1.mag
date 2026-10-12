@@ -1,0 +1,27 @@
+magic
+tech sky130A
+timestamp 1781754200
+<< locali >>
+rect -35 85 45 105
+rect 310 85 375 105
+<< metal1 >>
+rect -35 160 375 300
+rect -35 5 375 55
+use gate_not_x1  gate_not_x1_0
+timestamp 1781751977
+transform 1 0 70 0 1 15
+box -105 -30 100 315
+use gate_not_x1  gate_not_x1_1
+timestamp 1781751977
+transform 1 0 275 0 1 15
+box -105 -30 100 315
+<< labels >>
+flabel locali -35 95 -35 95 3 FreeSerif 160 0 0 0 in
+port 1 e
+flabel locali 375 95 375 95 7 FreeSerif 160 0 0 0 out
+port 2 w
+flabel metal1 -35 210 -35 210 3 FreeSerif 160 0 0 0 VDDA
+port 3 e
+flabel metal1 -35 30 -35 30 3 FreeSerif 160 0 0 0 VSSA
+port 4 e
+<< end >>
