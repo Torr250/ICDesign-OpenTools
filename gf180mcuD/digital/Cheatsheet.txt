@@ -1,0 +1,55 @@
+#More info
+https://unic-cass.github.io/training/4.1-create-design-and-simulate.html
+
+
+#See inside the documents
+gedit counter_4b.v &
+gedit counter_4b_tb.v &
+
+#Compile the counter and turn it into an executalbe
+iverilog -o counter_4b_tb counter_4b_tb.v counter_4b.v
+
+#Test the code
+vvp counter_4b_tb
+
+#See the waveforms
+gtkwave test.vcd
+
+
+#In order to synthesize your circuit you need 3 files
+1) verilog.v
+2) config.yaml
+
+gedit config_counter_4b.yaml &
+
+librelane config_counter_4b.yaml 
+
+#go to runs > final > gds
+#open magic
+klayout &
+
+read gds
+
+select all the design with s
+ctrl+x show desing
+shift+x hide design 
+z zoom in
+shift+z zoom out
+
+# go to runs > final > spice
+# copy dot spice document and paste it into the digital and analog/spice
+cp counter_4b.spice /foss/designs/digital/
+
+# return 
+cd /foss/designs/ 
+gedit counter_4b.spice &
+
+# Symbol needs to match the spice pin order
+.subckt counter_4b VGND VPWR clk ctr_out[0] ctr_out[1] ctr_out[2] ctr_out[3] nrst
+
+type=primitive
+format="@name @@VGND @@VPWR @@clk @@ctr_out[0] @@ctr_out[1] @@ctr_out[2] @@ctr_out[3] @@nrst @symname"
+spectre_format="@name ( @pinlist ) @symname"
+template="name=x1"
+
+
